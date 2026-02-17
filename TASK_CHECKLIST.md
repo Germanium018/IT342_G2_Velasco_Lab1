@@ -8,7 +8,7 @@
 - [x] Web: Create React pages for Login and Register    Commit: 345697c
 - [x] Web: Implement Protected Dashboard and Logout     Commit: af85a71
 - [x] Mobile: Implement Login, Register, Dashboard      Commit: b7f9df2
-- [x] Docs: Finalize FRS PDF                            Commit: 
+- [x] Docs: Finalize FRS PDF                            Commit: 1131f6f
 
 
 ## TODO
