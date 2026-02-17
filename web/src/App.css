@@ -1,4 +1,4 @@
-/* index.css */
+/* --- GLOBAL RESET & ROOT --- */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: #f4f7f6; /* Soft professional background */
@@ -6,60 +6,150 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
   min-height: 100vh;
+  /* CRITICAL: Removed display: flex to keep navbar at the top */
+  background-color: #f4f7f6;
 }
 
 #root {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-/* Authentication Container */
-.auth-page, .register-page, .login-page {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px; /* Aligned with typical Mobile/Web auth forms */
+/* --- AUTHENTICATION PAGES (Login/Register Card Style) --- */
+.login-page, .register-page {
+  background-color: #ffffff; /* Pure white background */
+  padding: 2.5rem; /* Spacious padding inside the card */
+  border-radius: 12px; /* Smooth rounded corners */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Soft drop shadow */
+  width: 90%; 
+  max-width: 420px; /* Aligned with typical auth forms */
   text-align: center;
+
+  /* ABSOLUTE CENTERING: Perfectly centers the card on the screen */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h2 {
   color: #333;
   margin-bottom: 1.5rem;
+  font-weight: 700; /* Bold header */
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Spacing for the fields defined in your ERD */
+  gap: 1.2rem; /* Increased gap for a cleaner look */
 }
 
-/* Reusable Component Styling */
+/* --- UPDATED INPUT BOX STYLING --- */
 .auth-input {
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 14px; /* Increased padding to make the boxes bigger */
+  border: 1px solid #e0e0e0; /* Faded/Lighter rectangle lines */
+  border-radius: 6px; /* Slightly more rounded */
   font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* Adds a subtle blue glow when you click inside the box */
+.auth-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Standard Theme Button (Login/Register) */
 button {
-  padding: 12px;
-  background-color: #007bff;
+  padding: 14px; /* Matches the new input height */
+  background-color: #007bff; /* Primary theme color */
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1rem;
   transition: background 0.3s;
 }
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* --- DASHBOARD NAVIGATION BAR --- */
+.dashboard-wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.navbar {
+  background-color: #007bff; /* Matches the button blue */
+  color: white;
+  display: flex;
+  justify-content: space-between; /* Pushes logo left, button right */
+  align-items: center;
+  padding: 0 2rem;
+  height: 70px;
+  width: 100%;
+  box-sizing: border-box; /* Ensures no horizontal scroll */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Red Logout Button */
+.logout-btn-red {
+  background-color: #dc3545; /* Red as requested */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.logout-btn-red:hover {
+  background-color: #c82333;
+  transform: scale(1.05); /* Interactive pop effect */
+}
+
+/* --- DASHBOARD CONTENT --- */
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px); /* Centers text in space below navbar */
+}
+
+.welcome-text {
+  font-size: 5rem; /* Massive text */
+  font-weight: 900;
+  color: #222;
+  text-align: center;
+}
+
+/* Footer link for Register/Login toggle */
+.auth-footer {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Mobile Responsiveness for Big Text */
+@media (max-width: 600px) {
+  .welcome-text {
+    font-size: 2.5rem;
+  }
+  .navbar {
+    padding: 0 1rem;
+  }
 }

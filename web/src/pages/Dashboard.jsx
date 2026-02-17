@@ -1,37 +1,29 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const Dashboard = () => {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (!token) navigate('/login'); // Redirect if not authenticated
-    }, [navigate]);
-
-    const handleLogout = async () => {
-        try {
-            // Trigger the handleLogout() logic in your Class Diagram
-            await axios.post('http://localhost:8080/api/auth/logout');
-            localStorage.removeItem('token');
-            alert("Logged out successfully");
-            navigate('/login'); // Redirect to Log in Page
-        } catch (error) {
-            console.error("Logout failed", error);
-        }
+    const handleLogout = () => {
+        // Clear the JWT and any session data
+        localStorage.removeItem('token');
+        navigate('/login');
     };
 
     return (
-        <div className="auth-page"> {/* Reusing your centered CSS */}
-            <h2>User Profile</h2>
-            <div className="profile-info">
-                <p><strong>Status:</strong> Authenticated</p>
-                <p>Welcome to your protected dashboard!</p>
+        <div className="dashboard-wrapper">
+            <nav className="navbar">
+                <div className="nav-logo">Mini App</div>
+                <div className="nav-actions">
+                    <button className="logout-btn-red" onClick={handleLogout}>
+                        Log out
+                    </button>
+                </div>
+            </nav>
+
+            <div className="dashboard-container">
+                {/* Massive 5rem text from your index.css */}
+                <h1 className="welcome-text">Welcome, User.</h1>
             </div>
-            <button onClick={handleLogout} style={{ backgroundColor: '#dc3545' }}>
-                Log Out
-            </button>
         </div>
     );
 };

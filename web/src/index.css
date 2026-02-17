@@ -6,62 +6,128 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
   min-height: 100vh;
+  /* Removed flex from body to allow navbar to sit at the top */
+  background-color: #f4f7f6;
 }
 
 #root {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* Removed flex from root to prevent dashboard squashing */
 }
 
-/* Authentication Container */
-.auth-page, .register-page, .login-page {
+/* --- Authentication Card (Login & Register) --- */
+.register-page, .login-page {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px; /* Aligned with typical Mobile/Web auth forms */
+  padding: 2.5rem; /* Increased padding for better look */
+  border-radius: 12px; /* Smoother corners */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Softer shadow */
+  width: 90%;
+  max-width: 420px; /* Slightly wider for the new input size */
   text-align: center;
+
+  /* PERFECT CENTERING: Keeps card in middle without affecting Dashboard */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h2 {
   color: #333;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
+  font-weight: 700;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Spacing for the fields defined in your ERD */
+  gap: 1.2rem; /* Better spacing between fields */
 }
 
-/* Reusable Component Styling */
+/* --- UPDATED INPUT BOXES --- */
 .auth-input {
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 14px 16px; /* Bigger and easier to type in */
+  border: 1px solid #d1d5db; /* Faded/Lighter gray lines instead of solid black */
+  border-radius: 8px; /* More modern rounded look */
   font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease; /* Smooth focus effect */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Blue glow effect on click */
+.auth-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
 }
 
 button {
-  padding: 12px;
-  background-color: #007bff;
+  padding: 14px;
+  background-color: #007bff; /* Primary theme color */
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1rem;
   transition: background 0.3s;
+  margin-top: 0.5rem;
 }
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* --- DASHBOARD STYLES (Keeps Navbar at Top) --- */
+.navbar {
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 70px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.logout-btn-red {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.logout-btn-red:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px);
+}
+
+.welcome-text {
+  font-size: 5rem; /* Massive greeting */
+  font-weight: 900;
+  color: #111;
+  text-align: center;
 }
 
 /* Styling for the footer links */

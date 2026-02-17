@@ -3,10 +3,8 @@ const AuthInput = ({ type, placeholder, value, onChange }) => {
         <input 
             type={type} 
             placeholder={placeholder} 
-            value={value} 
+            value={value} // Make sure this line is here!
             onChange={onChange} 
-            className="auth-input"
-            required 
         />
     );
 };
